@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <data>
+
+    <variable
+      name="stu"
+      type="org.group9.stumgr.bean.Student" />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:gravity="start"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall"
+    android:orientation="horizontal"
+    android:padding="?android:attr/listPreferredItemPaddingStart">
+
+    <TextView
+      style="@style/lis_field"
+      android:layout_weight="1"
+      android:text="@{``+stu.id,default=12345}" />
+
+    <TextView
+      style="@style/lis_field"
+      android:layout_weight="1"
+      android:text="@{stu.name,default=某某某}" />
+
+    <TextView
+      style="@style/lis_field"
+      android:layout_weight="0.5"
+      android:text="@{stu.gender,default=男}" />
+
+    <TextView
+      style="@style/lis_field"
+      android:layout_weight="0.5"
+      android:text="@{``+stu.age,default=23}" />
+
+    <View
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:layout_weight="1" />
+  </LinearLayout>
+
+</layout>

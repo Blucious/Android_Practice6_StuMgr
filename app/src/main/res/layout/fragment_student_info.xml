@@ -36,6 +36,34 @@
         </LinearLayout>
         <!-- 名字 结束 -->
 
+        <!-- 年龄 开始 -->
+        <LinearLayout style="@style/di">
+
+          <TextView
+            style="@style/dt"
+            android:text="年龄：" />
+
+          <TextView
+            style="@style/dd"
+            android:text="@{``+student.age}" />
+
+        </LinearLayout>
+        <!-- 年龄 结束 -->
+
+        <!-- 性别 开始 -->
+        <LinearLayout style="@style/di">
+
+          <TextView
+            style="@style/dt"
+            android:text="性别：" />
+
+          <TextView
+            style="@style/dd"
+            android:text="@{student.gender}" />
+
+        </LinearLayout>
+        <!-- 性别 结束 -->
+
         <!-- 电话 开始 -->
         <LinearLayout style="@style/di">
 

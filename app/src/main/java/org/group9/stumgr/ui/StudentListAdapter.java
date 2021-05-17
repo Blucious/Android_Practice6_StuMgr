@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.group9.stumgr.R;
 import org.group9.stumgr.bean.EnduringStudentCriteria;
 import org.group9.stumgr.bean.Student;
-import org.group9.stumgr.databinding.SimpleListItemBinding;
+import org.group9.stumgr.databinding.ListItemStudentBinding;
 import org.group9.stumgr.service.StudentService;
 
 import java.util.Collections;
@@ -114,8 +114,8 @@ public class StudentListAdapter
    @NonNull
    @Override
    public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      SimpleListItemBinding bd = DataBindingUtil.inflate(layoutInflater,
-         R.layout.simple_list_item, parent, false);
+      ListItemStudentBinding bd = DataBindingUtil.inflate(layoutInflater,
+         R.layout.list_item_student, parent, false);
       return new StudentViewHolder(bd);
    }
 
@@ -136,7 +136,7 @@ public class StudentListAdapter
    public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
       final Student stu = filteredStudents.get(position);
 
-      holder.bd.textView.setText(stu.getName());
+      holder.bd.setStu(stu);
       holder.bd.getRoot().setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -148,9 +148,9 @@ public class StudentListAdapter
    }
 
    public static class StudentViewHolder extends RecyclerView.ViewHolder {
-      private final SimpleListItemBinding bd;
+      private final ListItemStudentBinding bd;
 
-      public StudentViewHolder(SimpleListItemBinding bd) {
+      public StudentViewHolder(ListItemStudentBinding bd) {
          super(bd.getRoot());
          this.bd = bd;
       }

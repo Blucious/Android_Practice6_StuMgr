@@ -16,6 +16,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.IntSupplier;
 import java.util.stream.Collectors;
 
@@ -23,6 +24,12 @@ public class StudentGenerator {
    private static final String TAG = StudentGenerator.class.getSimpleName();
 
    private static List<String> names;
+
+   private static final AtomicInteger idCnt = new AtomicInteger(0);
+
+   public static int genId() {
+      return idCnt.incrementAndGet();
+   }
 
    public static String genName() {
       if (names == null) {
@@ -46,6 +53,15 @@ public class StudentGenerator {
       }
    }
 
+   public static String genGender() {
+      String[] arr = {"男", "女"};
+      return arr[randInt(0, arr.length - 1)];
+   }
+
+   public static int genAge() {
+      return randInt(18, 25);
+   }
+
    public static String genPhoneNumber() {
       StringBuilder sb = new StringBuilder(11);
       sb.append('1');
@@ -63,8 +79,11 @@ public class StudentGenerator {
 
    public static Student genStudent() {
       Student stu = new Student();
+      stu.setId(genId());
       // 个人信息
       stu.setName(genName());
+      stu.setAge(genAge());
+      stu.setGender(genGender());
       stu.setPhoneNumber(genPhoneNumber());
       stu.setAddress(genAddress());
       // 成绩

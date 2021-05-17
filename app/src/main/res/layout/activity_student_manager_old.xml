@@ -47,14 +47,15 @@
 
       <View style="@style/sep_v" />
 
+      <fragment
+        android:id="@+id/stuInfoFragment"
+        android:name="org.group9.stumgr.ui.StudentInfoFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.75" />
+
     </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent" />
     <!-- 学生列表 & 学生信息 结束 -->
-
-
 
   </LinearLayout>
 

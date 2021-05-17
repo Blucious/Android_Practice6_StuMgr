@@ -2,15 +2,29 @@ package org.group9.stumgr.bean;
 
 import android.annotation.SuppressLint;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import org.apache.commons.math3.util.Precision;
 
 import java.io.Serializable;
 
+@Entity
 public class Student implements Serializable {
+   @PrimaryKey
+   protected Integer id;
    // 个人信息
-   private String name;
-   private String phoneNumber;
-   private String address;
+   @ColumnInfo(name = "name")
+   protected String name;
+   @ColumnInfo(name = "age")
+   protected Integer age;
+   @ColumnInfo(name = "gender")
+   protected String gender;
+   @ColumnInfo(name = "phoneNumber")
+   protected String phoneNumber;
+   @ColumnInfo(name = "address")
+   protected String address;
 
    /*
     平时成绩、 期末成绩、个人得分不保存，而是通过计算得出
@@ -22,22 +36,24 @@ public class Student implements Serializable {
     */
 
    // 平时成绩，nm=Normal
-   private Integer nmAttendanceScore;
-   private Integer nmSpeakingScore;
-   private Integer nmDemonstrationScore;
-   private Integer nmAnswerScore;
+   @ColumnInfo(name = "nmAttendanceScore")
+   protected Integer nmAttendanceScore;
+   @ColumnInfo(name = "nmSpeakingScore")
+   protected Integer nmSpeakingScore;
+   @ColumnInfo(name = "nmDemonstrationScore")
+   protected Integer nmDemonstrationScore;
+   @ColumnInfo(name = "nmAnswerScore")
+   protected Integer nmAnswerScore;
 
    // 期末成绩，et=End of Term
-   private Integer etProjectScore;
-   private Integer etDemonstrationScore;
-   private Integer etAnswerScore;
+   @ColumnInfo(name = "etProjectScore")
+   protected Integer etProjectScore;
+   @ColumnInfo(name = "etDemonstrationScore")
+   protected Integer etDemonstrationScore;
+   @ColumnInfo(name = "etAnswerScore")
+   protected Integer etAnswerScore;
 
    public Student() {
-   }
-
-   public Student(String name, String phoneNumber) {
-      this.name = name;
-      this.phoneNumber = phoneNumber;
    }
 
    public Student setDefault() {
@@ -135,12 +151,36 @@ public class Student implements Serializable {
    // ---------------- 计算型Getter 结束 ----------------
 
 
+   public Integer getId() {
+      return id;
+   }
+
+   public void setId(Integer id) {
+      this.id = id;
+   }
+
    public String getName() {
       return name;
    }
 
    public void setName(String name) {
       this.name = name;
+   }
+
+   public Integer getAge() {
+      return age;
+   }
+
+   public void setAge(Integer age) {
+      this.age = age;
+   }
+
+   public String getGender() {
+      return gender;
+   }
+
+   public void setGender(String gender) {
+      this.gender = gender;
    }
 
    public String getPhoneNumber() {

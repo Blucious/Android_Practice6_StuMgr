@@ -58,7 +58,7 @@ public class StudentManagerActivity extends AppCompatActivity {
 
    private void initData() {
       setStudentsAndSyncToAdapter(
-         StudentService.getRandomStudentsAsList(25)
+         StudentService.getAll()
       );
 
    }
@@ -97,7 +97,8 @@ public class StudentManagerActivity extends AppCompatActivity {
             new StudentListAdapter.ViewItemOnClickListener() {
                @Override
                public void onClick(Student student, int position) {
-                  displayStudent(student);
+                  Intent intent = new Intent(StudentManagerActivity.this, StudentDetailActivity.class);
+                  startActivity(intent);
                }
             },
             new StudentListAdapter.DataUpdatingFinishedListener() {
@@ -142,10 +143,10 @@ public class StudentManagerActivity extends AppCompatActivity {
     */
    private void displayStudent(@Nullable Student stu) {
 
-      StudentInfoFragment fragment = (StudentInfoFragment) getSupportFragmentManager()
-         .findFragmentById(R.id.stuInfoFragment);
-
-      fragment.setStudent(stu);
+      //StudentInfoFragment fragment = (StudentInfoFragment) getSupportFragmentManager()
+      //   .findFragmentById(R.id.stuInfoFragment);
+      //
+      //fragment.setStudent(stu);
    }
 
    /* ---------------- Activity返回值处理相关 开始 ---------------- */

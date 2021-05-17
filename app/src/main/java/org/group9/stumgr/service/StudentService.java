@@ -5,10 +5,15 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+
 import com.alibaba.fastjson.JSONArray;
 
 import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.bean.StudentCriteria;
+import org.group9.stumgr.context.G9StuMgrApplication;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,21 +33,36 @@ import java.util.List;
 public class StudentService {
    private static final String TAG = StudentService.class.getSimpleName();
 
-   public static List<Student> getDemoStudentsAsList() {
-      Student[] students = {
-         new Student("艾边城", "电话 139* * * * 8888\n湖北省武汉市洪山区 1 号"),
-         new Student("艾承旭", "电话 139* * * * 2222\n湖北省武汉市洪山区 2 号"),
-         new Student("马小云", "电话 139* * * * 3333\n湖北省武汉市洪山区 3 号"),
-         new Student("王小强", "电话 139* * * * 6666\n湖北省武汉市洪山区 4 号"),
-      };
-      return Arrays.asList(students);
-   }
-
    public static List<Student> getRandomStudentsAsList(int n) {
       if (n < 0) {
          n = 0;
       }
       return StudentGenerator.genStudentList(n);
+   }
+
+   public static List<Student> getAll() {
+      return G9StuMgrApplication.getStudentDao()
+         .getAll();
+   }
+
+   public static Student getById(int id) {
+      return G9StuMgrApplication.getStudentDao()
+         .getById(id);
+   }
+
+   public static void insertAll(List<Student> students) {
+      G9StuMgrApplication.getStudentDao()
+         .insertAll(students.toArray(new Student[0]));
+   }
+
+   public static void deleteById(int id) {
+      G9StuMgrApplication.getStudentDao()
+         .deleteById(id);
+   }
+
+   public static int deleteAll() {
+      return G9StuMgrApplication.getStudentDao()
+         .deleteAll();
    }
 
    /**

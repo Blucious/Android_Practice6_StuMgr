@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <data>
+
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <fragment
+      android:id="@+id/stuInfoFragment"
+      android:name="org.group9.stumgr.ui.StudentInfoFragment"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1" />
+
+    <Button
+      android:id="@+id/modifyButton"
+      style="@style/normalButton"
+      android:layout_width="match_parent"
+      android:text="修改" />
+
+    <Button
+      android:id="@+id/deleteButton"
+      style="@style/normalButton"
+      android:layout_width="match_parent"
+      android:text="删除" />
+
+  </LinearLayout>
+</layout>
