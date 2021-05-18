@@ -7,16 +7,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.util.Log;
 
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-
 import com.alibaba.fastjson.JSONArray;
 
 import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.bean.StudentCriteria;
 import org.group9.stumgr.context.G9StuMgrApplication;
-import org.group9.stumgr.dao.StudentDao;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -60,6 +55,11 @@ public class StudentService {
    public static boolean insert(Student student) {
       return -1 != G9StuMgrApplication.getStudentDao()
          .insert(student);
+   }
+
+   public static int update(Student student) {
+      return G9StuMgrApplication.getStudentDao()
+         .update(student);
    }
 
    public static void insertAll(List<Student> students) {
