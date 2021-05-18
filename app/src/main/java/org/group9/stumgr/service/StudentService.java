@@ -2,6 +2,7 @@ package org.group9.stumgr.service;
 
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
 
@@ -14,6 +15,7 @@ import com.alibaba.fastjson.JSONArray;
 import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.bean.StudentCriteria;
 import org.group9.stumgr.context.G9StuMgrApplication;
+import org.group9.stumgr.dao.StudentDao;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,6 +33,7 @@ import java.util.Date;
 import java.util.List;
 
 public class StudentService {
+
    private static final String TAG = StudentService.class.getSimpleName();
 
    public static List<Student> getRandomStudentsAsList(int n) {
@@ -55,11 +58,17 @@ public class StudentService {
          .insertAll(students.toArray(new Student[0]));
    }
 
-   public static void deleteById(int id) {
-      G9StuMgrApplication.getStudentDao()
+   /**
+    * @return 是否删除成功
+    */
+   public static boolean deleteById(int id) {
+      return 1 == G9StuMgrApplication.getStudentDao()
          .deleteById(id);
    }
 
+   /**
+    * @return 影响行数
+    */
    public static int deleteAll() {
       return G9StuMgrApplication.getStudentDao()
          .deleteAll();

@@ -11,6 +11,7 @@ import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.dao.AppDatabase;
 import org.group9.stumgr.dao.StudentDao;
 import org.group9.stumgr.service.StudentService;
+import org.group9.stumgr.ui.StudentManagerActivity;
 
 import java.util.concurrent.Executors;
 
@@ -38,12 +39,14 @@ public class G9StuMgrApplication extends Application {
       RoomDatabase.Callback rdc = new RoomDatabase.Callback() {
          @Override
          public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            Executors.newFixedThreadPool(1).execute(() -> {
-               studentDao.insertAll(
-                  StudentService.getRandomStudentsAsList(30)
-                     .toArray(new Student[0])
-               );
-            });
+            //Executors.newScheduledThreadPool(1).execute(() -> {
+            //
+            //   Student[] students = StudentService.getRandomStudentsAsList(30)
+            //      .toArray(new Student[0]);
+            //
+            //   studentDao.insertAll(students);
+            //
+            //});
          }
       };
 
@@ -54,6 +57,7 @@ public class G9StuMgrApplication extends Application {
          .build();
 
       studentDao = db.studentDao();
+
    }
 
    public static AppDatabase getDb() {

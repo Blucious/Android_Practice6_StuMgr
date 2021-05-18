@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import org.group9.stumgr.bean.Student;
 
@@ -22,9 +23,18 @@ public interface StudentDao {
    @Insert
    void insertAll(Student... students);
 
+   /**
+    * @return 影响的行数
+    */
+   @Update
+   int update(Student student);
+
+   /**
+    * @return 影响的行数
+    */
    @Query("DELETE FROM student " +
       "WHERE id = :id")
-   void deleteById(int id);
+   int deleteById(int id);
 
    @Query("DELETE FROM student")
    int deleteAll();

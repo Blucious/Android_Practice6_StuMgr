@@ -1,19 +1,21 @@
 package org.group9.stumgr.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 
 import org.group9.stumgr.R;
 import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.databinding.ActivityStudentDetailBinding;
 import org.group9.stumgr.service.StudentService;
 import org.group9.stumgr.ui.custom.NavigableAppCompatActivity;
-
-import java.util.List;
 
 public class StudentDetailActivity extends NavigableAppCompatActivity {
 
@@ -43,10 +45,65 @@ public class StudentDetailActivity extends NavigableAppCompatActivity {
          finish();
       }
 
-      StudentInfoFragment fragment = (StudentInfoFragment) getSupportFragmentManager()
-         .findFragmentById(R.id.stuInfoFragment);
-
-      fragment.setStudent(stu);
+      bd.setStudent(stu);
    }
 
+
+   /* ---------------- 菜单相关 开始 ---------------- */
+   @Override
+   public boolean onCreateOptionsMenu(Menu menu) {
+      getMenuInflater().inflate(R.menu.activity_student_detail, menu);
+      return super.onCreateOptionsMenu(menu);
+   }
+
+   @Override
+   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+      int id = item.getItemId();
+
+      if (id == R.id.deleteMenuItem) {
+         onDeleteOptionSelected(item);
+
+      } else {
+         return super.onOptionsItemSelected(item);
+      }
+      return true;
+   }
+
+   private void onDeleteOptionSelected(MenuItem item) {
+
+      new AlertDialog.Builder(this)
+         .setTitle("确认")
+         .setTitle("确认删除学生 '" + bd.getStudent().getName() + "' 吗")
+         .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+               deleteCurrentStudent();
+            }
+         })
+         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+         }).show();
+
+   }
+   /* ---------------- 菜单相关 结束 ---------------- */
+
+   private void deleteCurrentStudent() {
+
+      boolean succeeded = StudentService.deleteById(bd.getStudent().getId());
+
+      if (succeeded) {
+         getToastHelper().showShort("删除成功");
+      } else {
+         getToastHelper().showLong("删除失败");
+      }
+
+      // 结束当前Activity
+      Intent intent = new Intent()
+         .putExtra(UIConstants.BK_IS_UPDATE_NEEDED, succeeded);
+      setResult(RESULT_OK, intent);
+      finish();
+   }
 }

@@ -11,7 +11,15 @@ public class ToastHelper {
    }
 
    public void showShort(String fmt, Object... args) {
+      show(Toast.LENGTH_SHORT, fmt, args);
+   }
+
+   public void showLong(String fmt, Object... args) {
+      show(Toast.LENGTH_LONG, fmt, args);
+   }
+
+   public void show(int duration, String fmt, Object... args) {
       String text = String.format(fmt, args);
-      Toast.makeText(ctx, text, Toast.LENGTH_SHORT).show();
+      Toast.makeText(ctx, text, duration).show();
    }
 }
