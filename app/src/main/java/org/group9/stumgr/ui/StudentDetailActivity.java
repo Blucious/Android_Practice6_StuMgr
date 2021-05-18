@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
+import org.apache.commons.lang3.StringUtils;
 import org.group9.stumgr.R;
 import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.databinding.ActivityStudentDetailBinding;
@@ -72,10 +73,14 @@ public class StudentDetailActivity extends NavigableAppCompatActivity {
    }
 
    private void onDeleteOptionSelected(MenuItem item) {
+      String studentName = bd.getStudent().getName();
+      if (studentName == null) {
+         studentName = "";
+      }
 
       new AlertDialog.Builder(this)
          .setTitle("操作确认")
-         .setMessage("确认删除学生 '" + bd.getStudent().getName() + "' 吗")
+         .setMessage("确认删除学生 '" + studentName + "' 吗")
          .setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

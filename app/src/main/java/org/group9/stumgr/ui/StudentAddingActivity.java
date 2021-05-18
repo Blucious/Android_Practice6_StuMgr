@@ -1,5 +1,6 @@
 package org.group9.stumgr.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,9 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
+import org.apache.commons.lang3.StringUtils;
 import org.group9.stumgr.R;
 import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.databinding.ActivityStudentAddingBinding;
+import org.group9.stumgr.service.StudentService;
 import org.group9.stumgr.ui.custom.NavigableAppCompatActivity;
 
 public class StudentAddingActivity extends NavigableAppCompatActivity {
@@ -55,7 +58,25 @@ public class StudentAddingActivity extends NavigableAppCompatActivity {
 
    private void onStudentAddingDoneOptionSelected(MenuItem item) {
 
+      Student student = bd.getStudent();
+      if (StringUtils.isEmpty(student.getName())) {
+         getToastHelper().showShort("请输入学生姓名");
+         return;
+      }
 
+      boolean succeeded = StudentService.insert(student);
+
+      if (succeeded) {
+         getToastHelper().showShort("添加成功");
+      } else {
+         getToastHelper().showLong("添加失败");
+      }
+
+      // 结束当前Activity
+      Intent intent = new Intent()
+         .putExtra(UIConstants.BK_IS_UPDATE_NEEDED, succeeded);
+      setResult(RESULT_OK, intent);
+      finish();
    }
 
    /* ---------------- 菜单相关 结束 ---------------- */

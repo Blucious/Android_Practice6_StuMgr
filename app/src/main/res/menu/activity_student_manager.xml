@@ -38,4 +38,8 @@
     android:id="@+id/genStuMenuItem"
     android:title="测试 - 生成学生" />
 
+  <item
+    android:id="@+id/deleteAllStuMenuItem"
+    android:title="测试 - 删除全部学生" />
+
 </menu>

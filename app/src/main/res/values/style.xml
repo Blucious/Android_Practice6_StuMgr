@@ -3,7 +3,7 @@
 
   <style name="normalButton" parent="Widget.AppCompat.Button.Borderless.Colored">
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">16sp</item>
+    <item name="android:textSize">18sp</item>
   </style>
 
   <style name="editButton" parent="normalButton">
@@ -80,19 +80,36 @@
   </style>
 
   <!-- activity_student_adding.xml -->
+  <style name="control_groups">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingVertical">16dp</item>
+    <item name="android:orientation">vertical</item>
+    <item name="android:background">@color/White</item>
+  </style>
+
   <style name="control_group">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:orientation">horizontal</item>
     <item name="android:paddingVertical">0dp</item>
-    <item name="android:paddingHorizontal">26dp</item>
+    <item name="android:paddingHorizontal">12dp</item>
+  </style>
+
+  <style name="title">
+    <item name="android:layout_gravity">start</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingTop">8dp</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textSize">20sp</item>
   </style>
 
   <style name="lab">
     <item name="android:layout_gravity">center</item>
     <item name="android:layout_width">0dp</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_weight">2</item>
+    <item name="android:layout_weight">3</item>
     <item name="android:gravity">end</item>
     <item name="android:textSize">18sp</item>
   </style>
@@ -102,12 +119,14 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_weight">6</item>
     <item name="android:textSize">18sp</item>
+    <item name="android:layout_marginEnd">40dp</item>
   </style>
 
-  <style name="input_radio_button" parent="input">
+  <style name="input_radio_button">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textSize">18sp</item>
+    <item name="android:paddingRight">10dp</item>
   </style>
 
 </resources>

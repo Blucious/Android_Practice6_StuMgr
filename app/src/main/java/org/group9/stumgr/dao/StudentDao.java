@@ -20,6 +20,13 @@ public interface StudentDao {
       "WHERE id = :id")
    Student getById(int id);
 
+   /**
+    * @return the row ID of the newly inserted row,
+    * or -1 if an error occurred
+    */
+   @Insert
+   long insert(Student students);
+
    @Insert
    void insertAll(Student... students);
 

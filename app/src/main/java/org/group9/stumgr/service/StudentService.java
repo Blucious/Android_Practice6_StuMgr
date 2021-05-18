@@ -3,6 +3,7 @@ package org.group9.stumgr.service;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.util.Log;
 
@@ -51,6 +52,14 @@ public class StudentService {
    public static Student getById(int id) {
       return G9StuMgrApplication.getStudentDao()
          .getById(id);
+   }
+
+   /**
+    * @return 是插入除成功
+    */
+   public static boolean insert(Student student) {
+      return -1 != G9StuMgrApplication.getStudentDao()
+         .insert(student);
    }
 
    public static void insertAll(List<Student> students) {

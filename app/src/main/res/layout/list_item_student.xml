@@ -36,7 +36,7 @@
     <TextView
       style="@style/lis_field"
       android:layout_weight="0.5"
-      android:text="@{``+stu.age,default=23}" />
+      android:text="@{stu.age,default=23}" />
 
   </LinearLayout>
 

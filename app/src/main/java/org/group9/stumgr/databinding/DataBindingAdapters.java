@@ -7,12 +7,23 @@ import android.net.Uri;
 import android.text.Editable;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.InverseBindingAdapter;
 
 
 public class DataBindingAdapters {
+
+   @SuppressLint("SetTextI18n")
+   @BindingAdapter("android:text")
+   public static void setInteger(TextView view, Integer val) {
+      if (val == null) {
+         view.setText("");
+      } else {
+         view.setText(Integer.toString(val));
+      }
+   }
 
    @SuppressLint("SetTextI18n")
    @BindingAdapter("android:text")

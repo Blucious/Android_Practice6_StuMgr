@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -25,16 +26,18 @@ import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.databinding.ActivityStudentManagerBinding;
 import org.group9.stumgr.service.PermissionManager;
 import org.group9.stumgr.service.StudentService;
+import org.group9.stumgr.ui.custom.BaseAppCompatActivity;
 import org.group9.stumgr.util.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class StudentManagerActivity extends AppCompatActivity {
+public class StudentManagerActivity extends BaseAppCompatActivity {
 
    private static final String TAG = StudentManagerActivity.class.getSimpleName();
 
@@ -129,6 +132,14 @@ public class StudentManagerActivity extends AppCompatActivity {
          studentListAdapter.setStudents(students);
          studentListAdapter.notifyDataChanged();
       }
+
+      // 显示学生数量
+      ActionBar actionBar = getSupportActionBar();
+      if (actionBar == null) {
+         getToastHelper().showLong("共 " + students.size() + " 个学生");
+      } else {
+         actionBar.setSubtitle("学生数：" + students.size());
+      }
    }
 
    /**
@@ -139,7 +150,10 @@ public class StudentManagerActivity extends AppCompatActivity {
       executorService.execute(() -> {
 
          List<Student> students = StudentService.getAll();
-         setStudentsAndSyncToAdapter(students);
+
+         runOnUiThread(() -> {
+            setStudentsAndSyncToAdapter(students);
+         });
 
       });
    }
@@ -207,6 +221,9 @@ public class StudentManagerActivity extends AppCompatActivity {
 
       } else if (id == R.id.genStuMenuItem) {
          onGenStuOptionSelected(item);
+
+      } else if (id == R.id.deleteAllStuMenuItem) {
+         onDeleteAllStuOptionSelected(item);
 
       } else {
          return super.onOptionsItemSelected(item);
@@ -291,6 +308,12 @@ public class StudentManagerActivity extends AppCompatActivity {
    private void onGenStuOptionSelected(@NonNull MenuItem item) {
       List<Student> students = StudentService.getRandomStudentsAsList(30);
       StudentService.insertAll(students);
+
+      asyncFetchStudentsAndSyncToAdapter();
+   }
+
+   private void onDeleteAllStuOptionSelected(MenuItem item) {
+      StudentService.deleteAll();
 
       asyncFetchStudentsAndSyncToAdapter();
    }

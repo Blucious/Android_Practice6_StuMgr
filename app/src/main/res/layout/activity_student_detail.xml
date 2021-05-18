@@ -49,7 +49,7 @@
 
             <TextView
               style="@style/dd"
-              android:text="@{``+student.age}" />
+              android:text="@{student.age}" />
 
           </LinearLayout>
           <!-- 年龄 结束 -->
