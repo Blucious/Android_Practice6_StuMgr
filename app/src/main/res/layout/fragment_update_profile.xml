@@ -19,16 +19,18 @@
 
                 <TextView
                     android:layout_width="50dp"
+                    android:textSize="20dp"
                     android:layout_height="wrap_content"
                     android:text="@string/nametable" />
 
                 <EditText
                     android:id="@+id/name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
+                    android:textSize="20dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="@={student.name}"
-                    android:textSize="18sp" />
+                   />
             </LinearLayout>
 
             <LinearLayout
@@ -38,16 +40,18 @@
 
                 <TextView
                     android:layout_width="50dp"
+                    android:textSize="20dp"
                     android:layout_height="30dp"
                     android:text="@string/agelable" />
 
                 <EditText
                     android:id="@+id/agee"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
+                    android:textSize="20dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text=""
-                    android:textSize="18sp"
+                    android:text="@={student.age}"
+
                      />
             </LinearLayout>
 
@@ -58,16 +62,18 @@
 
                 <TextView
                     android:layout_width="50dp"
+                    android:textSize="20dp"
                     android:layout_height="wrap_content"
                     android:text="@string/phonelable" />
 
                 <EditText
                     android:id="@+id/phone_number"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
+                    android:textSize="20dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="@{student.phoneNumber}"
-                    android:textSize="18sp" />
+                    android:text="@={student.phoneNumber}"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -77,16 +83,18 @@
 
                 <TextView
                     android:layout_width="50dp"
+                    android:textSize="20dp"
                     android:layout_height="wrap_content"
                     android:text="@string/genderlable" />
 
                 <EditText
                     android:id="@+id/gender"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
+                    android:textSize="20dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="@{student.gender}"
-                    android:textSize="18sp" />
+                    android:text="@={student.gender}"
+                     />
             </LinearLayout>
 
             <LinearLayout
@@ -96,16 +104,18 @@
 
                 <TextView
                     android:layout_width="50dp"
+                    android:textSize="20dp"
                     android:layout_height="wrap_content"
                     android:text="@string/addresslable" />
 
                 <EditText
                     android:id="@+id/address"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
+                    android:textSize="20dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="@{student.address}"
-                    android:textSize="18sp" />
+                    android:text="@={student.address}"
+                    />
             </LinearLayout>
 
 

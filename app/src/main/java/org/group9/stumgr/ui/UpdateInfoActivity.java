@@ -42,10 +42,9 @@ public class UpdateInfoActivity extends AppCompatActivity {
          Log.d("TAG", "onOptionsItemSelected: n = " + n);
          Toast.makeText(UpdateInfoActivity.this, "修改成功", Toast.LENGTH_LONG).show();
 
-         //Intent intent = new Intent()
-         //   .putExtra();
-         //setResult(UIConstants.REQ_CODE_DEFAULT);
-         //finish();
+         Intent intent = new Intent().putExtra("stu",student);
+         setResult(UIConstants.REQ_CODE_DEFAULT,intent);
+         finish();
       } else {
          return super.onOptionsItemSelected(item);
       }

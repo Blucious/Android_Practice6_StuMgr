@@ -155,6 +155,7 @@ public class StudentManagerActivity extends AppCompatActivity {
          }
       }
 
+
       if (requestCode == UIConstants.REQ_CODE_GET_CONTENT) {
          // 获取文件选择器返回值 将json转化为java对象
          if (resultCode == Activity.RESULT_OK) { //是否选择，没选择就不会继续
