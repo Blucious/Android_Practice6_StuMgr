@@ -79,7 +79,6 @@ public class StudentGenerator {
 
    public static Student genStudent() {
       Student stu = new Student();
-      stu.setId(genId());
       // 个人信息
       stu.setName(genName());
       stu.setAge(genAge());
