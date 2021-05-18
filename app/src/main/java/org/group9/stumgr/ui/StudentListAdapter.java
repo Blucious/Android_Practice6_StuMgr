@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.group9.stumgr.R;
-import org.group9.stumgr.bean.EnduringStudentCriteria;
+import org.group9.stumgr.bean.CommonStudentCriteria;
 import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.databinding.ListItemStudentBinding;
 import org.group9.stumgr.service.StudentService;
@@ -33,7 +33,7 @@ public class StudentListAdapter
     */
    private List<Student> students = Collections.emptyList();
    private List<Student> filteredStudents = Collections.emptyList();
-   private EnduringStudentCriteria studentCriteria = new EnduringStudentCriteria();
+   private CommonStudentCriteria studentCriteria = new CommonStudentCriteria();
    private int sortingTypeIndex = 0;
 
    /**
@@ -68,13 +68,13 @@ public class StudentListAdapter
       this.sortingTypeIndex = sortingTypeIndex;
    }
 
-   public EnduringStudentCriteria getStudentCriteria() {
+   public CommonStudentCriteria getStudentCriteria() {
       return studentCriteria;
    }
 
-   public void setStudentCriteria(EnduringStudentCriteria studentCriteria) {
+   public void setStudentCriteria(CommonStudentCriteria studentCriteria) {
       if (studentCriteria == null) {
-         studentCriteria = new EnduringStudentCriteria();
+         studentCriteria = new CommonStudentCriteria();
       }
       this.studentCriteria = studentCriteria;
    }

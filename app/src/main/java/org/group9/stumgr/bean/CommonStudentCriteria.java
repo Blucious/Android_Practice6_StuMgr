@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * 学生过滤条件实现类
  */
-public class EnduringStudentCriteria extends StudentCriteria {
+public class CommonStudentCriteria extends StudentCriteria {
 
    /**
     * 名字过滤相关字段

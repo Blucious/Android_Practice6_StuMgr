@@ -21,6 +21,12 @@
     app:showAsAction="always" />
 
   <item
+    android:id="@+id/addStudentMenuItem"
+    android:icon="@drawable/ic_baseline_add_circle_outline_30"
+    android:title="添加学生"
+    app:showAsAction="always" />
+
+  <item
     android:id="@+id/importM"
     android:title="@string/importInfo" />
 

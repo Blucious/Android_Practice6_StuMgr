@@ -196,6 +196,9 @@ public class StudentManagerActivity extends AppCompatActivity {
       } else if (id == R.id.refreshStudentsMenuItem) {
          onRefreshStudentsOptionSelected(item);
 
+      } else if (id == R.id.addStudentMenuItem) {
+         onAddStudentOptionSelected(item);
+
       } else if (id == R.id.exportM) {
          onExportMOptionSelected();
 
@@ -252,6 +255,11 @@ public class StudentManagerActivity extends AppCompatActivity {
 
    private void onRefreshStudentsOptionSelected(MenuItem item) {
       asyncFetchStudentsAndSyncToAdapter();
+   }
+
+   private void onAddStudentOptionSelected(@NonNull MenuItem item) {
+      Intent intent = new Intent(this, StudentAddingActivity.class);
+      startActivityForResult(intent, UIConstants.REQ_CODE_DEFAULT);
    }
 
    private void onExportMOptionSelected() {

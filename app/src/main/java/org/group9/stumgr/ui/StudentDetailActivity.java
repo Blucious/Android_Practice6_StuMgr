@@ -32,6 +32,8 @@ public class StudentDetailActivity extends NavigableAppCompatActivity {
    }
 
    private void initView() {
+      setTitle("学生详情");
+
       Intent intent = getIntent();
 
       int stuId = intent.getIntExtra(UIConstants.BK_STUDENT_ID, -1);
@@ -72,8 +74,8 @@ public class StudentDetailActivity extends NavigableAppCompatActivity {
    private void onDeleteOptionSelected(MenuItem item) {
 
       new AlertDialog.Builder(this)
-         .setTitle("确认")
-         .setTitle("确认删除学生 '" + bd.getStudent().getName() + "' 吗")
+         .setTitle("操作确认")
+         .setMessage("确认删除学生 '" + bd.getStudent().getName() + "' 吗")
          .setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
