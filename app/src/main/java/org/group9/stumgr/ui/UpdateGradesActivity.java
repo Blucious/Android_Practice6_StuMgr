@@ -15,17 +15,16 @@ import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.service.StudentService;
 import org.group9.stumgr.ui.custom.NavigableAppCompatActivity;
 
-public class UpdateInfoActivity extends NavigableAppCompatActivity {
+public class UpdateGradesActivity extends NavigableAppCompatActivity {
 
    public Student student;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_update_info);
+      setContentView(R.layout.activity_update_grades);
 
       initView();
-
    }
 
    @Override
@@ -37,6 +36,7 @@ public class UpdateInfoActivity extends NavigableAppCompatActivity {
 
    @Override
    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
       if (item.getItemId() == R.id.updatedone) {
          boolean succeeded = StudentService.update(student);
 
@@ -49,10 +49,10 @@ public class UpdateInfoActivity extends NavigableAppCompatActivity {
          Intent intent = new Intent().putExtra("stu", student);
          setResult(UIConstants.REQ_CODE_DEFAULT, intent);
          finish();
-
       } else {
          return super.onOptionsItemSelected(item);
       }
+
       return true;
    }
 
@@ -62,17 +62,19 @@ public class UpdateInfoActivity extends NavigableAppCompatActivity {
       int stuId = intent.getIntExtra(UIConstants.BK_STUDENT_ID, -1);
       if (stuId == -1) {
          finish();
+         return;
       }
 
       student = StudentService.getById(stuId);
       if (student == null) {
          getToastHelper().showShort("无此学生");
          finish();
+         return;
       }
 
-      UpdateProfileFragment updateProfile = (UpdateProfileFragment) getSupportFragmentManager()
-         .findFragmentById(R.id.updateProfileFr);
-      updateProfile.setStudent(student);
+      UpdateGradesFragment updateGradesFragment = (UpdateGradesFragment) getSupportFragmentManager()
+         .findFragmentById(R.id.updateGrade);
+      updateGradesFragment.setStudent(student);
 
    }
 }

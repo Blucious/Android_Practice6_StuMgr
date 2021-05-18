@@ -21,11 +21,10 @@ public interface StudentDao {
    Student getById(int id);
 
    /**
-    * @return the row ID of the newly inserted row,
-    * or -1 if an error occurred
+    * @return the row ID of the newly inserted row, or -1 if an error occurred
     */
    @Insert
-   long insert(Student students);
+   long insert(Student student);
 
    @Insert
    void insertAll(Student... students);

@@ -39,7 +39,7 @@ public class DataBindingAdapters {
    public static Integer getInteger(EditText view) {
       Editable editable = view.getText();
       if (editable.length() == 0) {
-         return null;
+         return 0;
       }
       return Integer.parseInt(editable.toString());
    }

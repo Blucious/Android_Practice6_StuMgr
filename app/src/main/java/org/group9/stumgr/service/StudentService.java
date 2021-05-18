@@ -57,8 +57,11 @@ public class StudentService {
          .insert(student);
    }
 
-   public static int update(Student student) {
-      return G9StuMgrApplication.getStudentDao()
+   /**
+    * @return 是否修改成功
+    */
+   public static boolean update(Student student) {
+      return 1 == G9StuMgrApplication.getStudentDao()
          .update(student);
    }
 

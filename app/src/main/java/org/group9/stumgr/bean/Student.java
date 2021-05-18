@@ -82,7 +82,7 @@ public class Student implements Serializable {
       if (!ObjectUtils.allNotNull(nmAnswerScore, nmSpeakingScore, nmDemonstrationScore, nmAnswerScore)) {
          return null;
       }
-      double r = nmAnswerScore * 0.3
+      double r = nmAttendanceScore * 0.3
          + nmSpeakingScore * 0.2
          + nmDemonstrationScore * 0.3
          + nmAnswerScore * 0.2;
@@ -95,13 +95,13 @@ public class Student implements Serializable {
       if (nmScore == null) {
          return "";
       }
-      return String.format("%.2f\n" +
+      return String.format("%.1f\n" +
             "=(考勤%d*0.3=%.1f)\n" +
             "+(发言%d*0.2=%.1f)\n" +
             "+(演示%d*0.3=%.1f)\n" +
             "+(回答%d*0.2=%.1f)",
          nmScore,
-         nmAnswerScore, nmAnswerScore * 0.3,
+         nmAttendanceScore, nmAttendanceScore * 0.3,
          nmSpeakingScore, nmSpeakingScore * 0.2,
          nmDemonstrationScore, nmDemonstrationScore * 0.3,
          nmAnswerScore, nmAnswerScore * 0.2);
@@ -122,9 +122,9 @@ public class Student implements Serializable {
       if (etIndividualScore == null) {
          return "";
       }
-      return String.format("%.2f\n" +
-            "=(展示%d*0.6=%.2f)\n" +
-            "+(提问%d*0.4=%.2f)",
+      return String.format("%.1f\n" +
+            "=(展示%d*0.6=%.1f)\n" +
+            "+(提问%d*0.4=%.1f)",
          etIndividualScore,
          etDemonstrationScore, etDemonstrationScore * 0.6,
          etAnswerScore, etAnswerScore * 0.4);
@@ -147,11 +147,11 @@ public class Student implements Serializable {
          return "";
       }
       Double etIndividualScore = getEtIndividualScore();
-      return String.format("%.2f\n" +
-            "=(项目得分%d*0.7=%.2f)\n" +
-            "+(个人得分%.2f*0.3=%.2f)",
+      return String.format("%.1f\n" +
+            "=(项目得分%d*0.7=%.1f)\n" +
+            "+(个人得分%.1f*0.3=%.1f)",
          etScore,
-         etProjectScore, etDemonstrationScore * 0.7,
+         etProjectScore, etProjectScore * 0.7,
          etIndividualScore, etIndividualScore * 0.3);
    }
 
@@ -174,9 +174,9 @@ public class Student implements Serializable {
       }
       Double nmScore = getNmScore();
       Double etScore = getEtScore();
-      return String.format("%.2f\n" +
-            "=(平时成绩%.2f*0.4=%.2f)\n" +
-            "+(期末成绩%.2f*0.6=%.2f)",
+      return String.format("%.1f\n" +
+            "=(平时成绩%.1f*0.4=%.1f)\n" +
+            "+(期末成绩%.1f*0.6=%.1f)",
          totalScore,
          nmScore, nmScore * 0.4,
          etScore, etScore * 0.6);

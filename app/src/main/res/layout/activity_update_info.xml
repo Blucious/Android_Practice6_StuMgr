@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
         <fragment
             android:id="@+id/updateProfileFr"
-            android:name="org.group9.stumgr.ui.UpdateProfile"
+            android:name="org.group9.stumgr.ui.UpdateProfileFragment"
             android:layout_height="match_parent"
             android:layout_width="match_parent"/>
     </LinearLayout>

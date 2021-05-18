@@ -21,22 +21,22 @@
     <TextView
       style="@style/lis_field"
       android:layout_weight="1"
-      android:text="@{``+stu.id,default=12345}" />
+      android:text="@{``+stu.id,default=_____}" />
 
     <TextView
       style="@style/lis_field"
       android:layout_weight="1"
-      android:text="@{stu.name,default=某某某}" />
+      android:text="@{stu.name,default=___}" />
 
     <TextView
       style="@style/lis_field"
       android:layout_weight="0.5"
-      android:text="@{stu.gender,default=男}" />
+      android:text="@{stu.gender,default=_}" />
 
     <TextView
       style="@style/lis_field"
       android:layout_weight="0.5"
-      android:text="@{stu.age,default=23}" />
+      android:text="@{stu.age,default=__}" />
 
   </LinearLayout>
 

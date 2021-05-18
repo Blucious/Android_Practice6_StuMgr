@@ -1,14 +1,9 @@
 package org.group9.stumgr.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.UiAutomation;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.telephony.UiccCardInfo;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,18 +13,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
-import org.apache.commons.lang3.StringUtils;
 import org.group9.stumgr.R;
 import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.databinding.ActivityStudentDetailBinding;
 import org.group9.stumgr.service.StudentService;
 import org.group9.stumgr.ui.custom.NavigableAppCompatActivity;
 
-import java.io.File;
-import java.util.List;
-
 public class StudentDetailActivity extends NavigableAppCompatActivity {
+
    private Student student;
+
    private ActivityStudentDetailBinding bd;
 
    @Override
@@ -50,60 +43,59 @@ public class StudentDetailActivity extends NavigableAppCompatActivity {
       int stuId = intent.getIntExtra(UIConstants.BK_STUDENT_ID, -1);
       if (stuId == -1) {
          finish();
+         return;
       }
 
-
-      this.student = StudentService.getById(stuId);
+      student = StudentService.getById(stuId);
 
       if (student == null) {
          getToastHelper().showShort("无此学生");
          finish();
+         return;
       }
 
       bd.setStudent(student);
-      Button updateProfile = bd.personalInfoEditButton;
-      updateProfile.setOnClickListener(new View.OnClickListener() {
+      bd.personalInfoEditButton.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
             Intent intent = new Intent(StudentDetailActivity.this, UpdateInfoActivity.class)
-                    .putExtra(UIConstants.BK_STUDENT_ID, student.getId());
+               .putExtra(UIConstants.BK_STUDENT_ID, student.getId());
             startActivityForResult(intent, UIConstants.REQ_CODE_DEFAULT);
 
          }
       });
-      Button updateGrades = bd.scoreInfoEditButton;
-      updateGrades.setOnClickListener(new View.OnClickListener() {
+      bd.scoreInfoEditButton.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-            Intent intent = new Intent(StudentDetailActivity.this, Update_gradesActivity.class)
-                    .putExtra(UIConstants.BK_STUDENT_ID, student.getId());
+            Intent intent = new Intent(StudentDetailActivity.this, UpdateGradesActivity.class)
+               .putExtra(UIConstants.BK_STUDENT_ID, student.getId());
             startActivityForResult(intent, UIConstants.REQ_CODE_DEFAULT);
 
          }
       });
    }
-   public void SyncToDetial(Student student) {
+
+   public void SyncToDetail(Student student) {
       bd.setStudent(student);
 
    }
-      @Override
+
+   @Override
    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-      super.onActivityResult(requestCode, resultCode, data);
-      if(data!=null){
-
-
-      if (resultCode == UIConstants.REQ_CODE_DEFAULT) {
+      if (data != null) {
+         if (resultCode == UIConstants.REQ_CODE_DEFAULT) {
             Bundle bundle = data.getExtras();
             Student student = (Student) bundle.get("stu");
-            SyncToDetial(student);
+            SyncToDetail(student);
             Intent intent = new Intent();
-            intent.putExtra(UIConstants.BK_IS_UPDATE_NEEDED,true);
-            setResult(UIConstants.REQ_CODE_DEFAULT,intent);
+            intent.putExtra(UIConstants.BK_IS_UPDATE_NEEDED, true);
+            setResult(UIConstants.REQ_CODE_DEFAULT, intent);
 
+         }
       }
-      }
+
+      super.onActivityResult(requestCode, resultCode, data);
    }
-
 
 
    /* ---------------- 菜单相关 开始 ---------------- */
