@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +20,7 @@ import org.group9.stumgr.service.StudentService;
 import org.group9.stumgr.ui.custom.NavigableAppCompatActivity;
 
 public class StudentDetailActivity extends NavigableAppCompatActivity {
-
+   private Student student;
    private ActivityStudentDetailBinding bd;
 
    @Override
@@ -39,14 +41,27 @@ public class StudentDetailActivity extends NavigableAppCompatActivity {
          finish();
       }
 
-      Student stu = StudentService.getById(stuId);
-      if (stu == null) {
+
+      this.student = StudentService.getById(stuId);
+
+      if (student == null) {
          getToastHelper().showShort("无此学生");
          finish();
       }
 
-      bd.setStudent(stu);
+      bd.setStudent(student);
+      Button updateProfile = bd.personalInfoEditButton;
+      updateProfile.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            Intent intent = new Intent(StudentDetailActivity.this, UpdateInfoActivity.class)
+                    .putExtra(UIConstants.BK_STUDENT_ID, student.getId());
+            startActivityForResult(intent, UIConstants.REQ_CODE_DEFAULT);
+
+         }
+      });
    }
+
 
 
    /* ---------------- 菜单相关 开始 ---------------- */
