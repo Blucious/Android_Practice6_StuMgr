@@ -89,7 +89,7 @@ public class StudentService {
    /**
     * 导入操作
     */
-   public static List<Student> importStuInfoByJson(File file) {
+   public static List<Student> importStuInfoFromJson(File file) {
       List<Student> students = null;
       Log.d(TAG, "importStuInfoByJson: " + file.getPath());
 
@@ -106,6 +106,10 @@ public class StudentService {
          Log.d(TAG, "importStuInfoByJson: " + jsoncontent);
 
          students = JSONArray.parseArray(jsoncontent.toString(), Student.class);
+         // 清除id
+         for (Student student : students) {
+            student.setId(null);
+         }
 
          Log.d(TAG, "importStuInfoByJson: " + students);
 

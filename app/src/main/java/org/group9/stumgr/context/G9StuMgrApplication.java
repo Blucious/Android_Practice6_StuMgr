@@ -39,14 +39,6 @@ public class G9StuMgrApplication extends Application {
       RoomDatabase.Callback rdc = new RoomDatabase.Callback() {
          @Override
          public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            //Executors.newScheduledThreadPool(1).execute(() -> {
-            //
-            //   Student[] students = StudentService.getRandomStudentsAsList(30)
-            //      .toArray(new Student[0]);
-            //
-            //   studentDao.insertAll(students);
-            //
-            //});
          }
       };
 

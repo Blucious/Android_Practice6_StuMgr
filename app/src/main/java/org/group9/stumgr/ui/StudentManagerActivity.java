@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,7 +32,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -138,7 +136,7 @@ public class StudentManagerActivity extends BaseAppCompatActivity {
       if (actionBar == null) {
          getToastHelper().showLong("共 " + students.size() + " 个学生");
       } else {
-         actionBar.setSubtitle("学生数：" + students.size());
+         actionBar.setSubtitle("学生 " + students.size());
       }
    }
 
@@ -169,19 +167,30 @@ public class StudentManagerActivity extends BaseAppCompatActivity {
          }
       }
 
-
       if (requestCode == UIConstants.REQ_CODE_GET_CONTENT) {
          // 获取文件选择器返回值 将json转化为java对象
-         if (resultCode == Activity.RESULT_OK) { //是否选择，没选择就不会继续
+         if (resultCode == Activity.RESULT_OK) {
+            //是否选择，没选择就不会继续
             Uri data1 = data.getData();
             File file = new File(FileUtils.getFilePathByUri(StudentManagerActivity.this, data1));
-//          File file = UriToFile.trans(StudentActivity.this,data1);
-            List<Student> newStudents = StudentService.importStuInfoByJson(file);
+            // File file = UriToFile.trans(StudentActivity.this,data1);
+            List<Student> newStudents = StudentService.importStuInfoFromJson(file);
             // 导入后刷新列表
-            setStudentsAndSyncToAdapter(newStudents);
 
-            Toast.makeText(StudentManagerActivity.this,
-               "成功导入" + newStudents.size() + "条数据", Toast.LENGTH_LONG).show();
+            executorService.execute(() -> {
+
+               StudentService.insertAll(newStudents);
+               List<Student> refetched = StudentService.getAll();
+
+               runOnUiThread(() -> {
+                  setStudentsAndSyncToAdapter(refetched);
+
+                  Toast.makeText(StudentManagerActivity.this,
+                     "成功导入" + newStudents.size() + "条数据", Toast.LENGTH_LONG).show();
+               });
+
+
+            });
          }
       } else {
          super.onActivityResult(requestCode, resultCode, data);

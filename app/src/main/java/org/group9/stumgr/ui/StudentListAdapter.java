@@ -93,7 +93,7 @@ public class StudentListAdapter
     * 该方法会异步执行数据更新。
     */
    public void notifyDataChanged() {
-      executorService.submit(() -> {
+      executorService.execute(() -> {
 
          doFilterAndSort();
 

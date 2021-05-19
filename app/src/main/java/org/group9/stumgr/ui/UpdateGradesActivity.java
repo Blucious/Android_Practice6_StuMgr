@@ -49,6 +49,7 @@ public class UpdateGradesActivity extends NavigableAppCompatActivity {
          Intent intent = new Intent().putExtra("stu", student);
          setResult(UIConstants.REQ_CODE_DEFAULT, intent);
          finish();
+
       } else {
          return super.onOptionsItemSelected(item);
       }
