@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="student"
+            type="org.group9.stumgr.bean.Student" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="考勤成绩"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/attendance"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@={student.nmAttendanceScore}"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:text="发言成绩"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/speaking"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@={student.nmSpeakingScore}"
+                android:textSize="20dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="演示成绩"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/demo"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@={student.nmDemonstrationScore}"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="问答成绩"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/answer"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@={student.nmAnswerScore}"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="项目得分"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/projectgrade"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@={student.etProjectScore}"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:text="个人得分/展示"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/agee"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@={student.etDemonstrationScore}"
+                android:textSize="20dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="个人得分/提问"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/phone_number"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@={student.etAnswerScore}"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

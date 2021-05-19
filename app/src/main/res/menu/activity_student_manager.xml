@@ -15,10 +15,31 @@
     app:showAsAction="always" />
 
   <item
+    android:id="@+id/refreshStudentsMenuItem"
+    android:icon="@drawable/ic_baseline_refresh_30"
+    android:title="刷新学生列表"
+    app:showAsAction="always" />
+
+  <item
+    android:id="@+id/addStudentMenuItem"
+    android:icon="@drawable/ic_baseline_add_circle_outline_30"
+    android:title="添加学生"
+    app:showAsAction="always" />
+
+  <item
     android:id="@+id/importM"
     android:title="@string/importInfo" />
+
   <item
     android:id="@+id/exportM"
     android:title="@string/exportInfo" />
+
+  <item
+    android:id="@+id/genStuMenuItem"
+    android:title="测试 - 生成学生" />
+
+  <item
+    android:id="@+id/deleteAllStuMenuItem"
+    android:title="测试 - 删除全部学生" />
 
 </menu>

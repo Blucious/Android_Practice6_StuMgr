@@ -27,6 +27,10 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity android:name=".ui.StudentDetailActivity"></activity>
+    <activity android:name=".ui.StudentAddingActivity"></activity>
+    <activity android:name=".ui.UpdateGradesActivity"></activity>
+    <activity android:name=".ui.UpdateInfoActivity"></activity>
   </application>
 
 </manifest>

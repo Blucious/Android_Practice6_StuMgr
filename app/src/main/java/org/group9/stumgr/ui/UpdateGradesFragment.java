@@ -12,12 +12,11 @@ import androidx.fragment.app.Fragment;
 
 import org.group9.stumgr.R;
 import org.group9.stumgr.bean.Student;
-import org.group9.stumgr.databinding.FragmentStudentInfoBinding;
+import org.group9.stumgr.databinding.FragmentGradesBinding;
 
+public class UpdateGradesFragment extends Fragment {
 
-public class StudentInfoFragment extends Fragment {
-
-   private FragmentStudentInfoBinding bd;
+   private FragmentGradesBinding bd;
 
    @Nullable
    @Override
@@ -26,18 +25,13 @@ public class StudentInfoFragment extends Fragment {
                             @Nullable Bundle savedInstanceState) {
 
       bd = DataBindingUtil.inflate(
-         inflater, R.layout.fragment_student_info, container, false);
+         inflater, R.layout.fragment_grades, container, false);
 
       return bd.getRoot();
    }
 
-   public void setStudent(@Nullable Student student) {
-      if (student == null) {
-         bd.setStudent(new Student().setDefault());
-      } else {
-         bd.setStudent(student);
-      }
+   public void setStudent(Student student) {
+      bd.setStudent(student);
    }
-
 
 }

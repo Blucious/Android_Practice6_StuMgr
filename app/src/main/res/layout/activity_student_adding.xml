@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <data>
+
+    <variable
+      name="student"
+      type="org.group9.stumgr.bean.Student" />
+  </data>
+
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <LinearLayout style="@style/control_groups">
+
+        <TextView
+          style="@style/title"
+          android:text="个人信息" />
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="*姓名：" />
+
+          <EditText
+            style="@style/input"
+            android:inputType="text"
+            android:text="@={student.name}" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="年龄：" />
+
+          <EditText
+            style="@style/input"
+            android:inputType="number"
+            android:text="@={student.age}" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="性别：" />
+
+          <RadioGroup
+            style="@style/input"
+            android:orientation="horizontal">
+
+            <RadioButton
+              style="@style/input_radio_button"
+              android:onClick="@{() -> student.setGender(`男`)}"
+              android:text="男" />
+
+            <RadioButton
+              style="@style/input_radio_button"
+              android:onClick="@{() -> student.setGender(`女`)}"
+              android:text="女" />
+
+          </RadioGroup>
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="电话：" />
+
+          <EditText
+            style="@style/input"
+            android:inputType="textPhonetic"
+            android:text="@={student.phoneNumber}" />
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="地址：" />
+
+          <EditText
+            style="@style/input"
+            android:inputType="text"
+            android:text="@={student.address}" />
+        </LinearLayout>
+
+      </LinearLayout>
+
+      <View style="@style/sep_h15_tp" />
+
+      <LinearLayout style="@style/control_groups">
+
+        <TextView
+          style="@style/title"
+          android:text="平时成绩" />
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="考勤：" />
+
+          <EditText
+            style="@style/input"
+            android:hint="0~100"
+            android:inputType="number"
+            android:text="@={student.nmAttendanceScore}" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="发言：" />
+
+          <EditText
+            style="@style/input"
+            android:hint="0~100"
+            android:inputType="number"
+            android:text="@={student.nmSpeakingScore}" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="演示：" />
+
+          <EditText
+            style="@style/input"
+            android:hint="0~100"
+            android:inputType="number"
+            android:text="@={student.nmDemonstrationScore}" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="回答：" />
+
+          <EditText
+            style="@style/input"
+            android:hint="0~100"
+            android:inputType="number"
+            android:text="@={student.nmAnswerScore}" />
+        </LinearLayout>
+
+        <TextView
+          style="@style/title"
+          android:text="期末成绩" />
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="项目得分：" />
+
+          <EditText
+            style="@style/input"
+            android:hint="0~100"
+            android:inputType="number"
+            android:text="@={student.etProjectScore}" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="展示：" />
+
+          <EditText
+            style="@style/input"
+            android:hint="0~100"
+            android:inputType="number"
+            android:text="@={student.etDemonstrationScore}" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/control_group">
+
+          <TextView
+            style="@style/lab"
+            android:text="提问：" />
+
+          <EditText
+            style="@style/input"
+            android:hint="0~100"
+            android:inputType="number"
+            android:text="@={student.etAnswerScore}" />
+        </LinearLayout>
+
+      </LinearLayout>
+
+      <View style="@style/sep_h15_tp" />
+
+    </LinearLayout>
+
+  </ScrollView>
+</layout>

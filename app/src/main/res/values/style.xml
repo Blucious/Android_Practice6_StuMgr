@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+  <style name="normalButton" parent="Widget.AppCompat.Button.Borderless.Colored">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="editButton" parent="normalButton">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:background">@color/White</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <!--list_item_student.xml-->
+  <style name="lis_field">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">?android:attr/textAppearanceListItemSmall</item>
+  </style>
 
   <!--Definition Item Group-->
   <style name="digp">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_marginBottom">15dp</item>
     <item name="android:orientation">vertical</item>
+    <item name="android:background">@color/White</item>
+    <item name="android:paddingVertical">10dp</item>
+    <item name="android:paddingHorizontal">10dp</item>
   </style>
 
   <!--Definition Item-->
@@ -28,7 +47,7 @@
   <style name="dt">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">17sp</item>
+    <item name="android:textSize">18sp</item>
     <item name="android:textColor">#777</item>
   </style>
 
@@ -36,7 +55,7 @@
   <style name="dd">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">17sp</item>
+    <item name="android:textSize">18sp</item>
     <item name="android:textColor">#444</item>
   </style>
 
@@ -52,6 +71,62 @@
     <item name="android:layout_width">1dp</item>
     <item name="android:layout_height">match_parent</item>
     <item name="android:background">#ccc</item>
+  </style>
+
+  <!--VHorizontal Separator - Transparent-->
+  <style name="sep_h15_tp">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">15dp</item>
+  </style>
+
+  <!-- activity_student_adding.xml -->
+  <style name="control_groups">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingVertical">16dp</item>
+    <item name="android:orientation">vertical</item>
+    <item name="android:background">@color/White</item>
+  </style>
+
+  <style name="control_group">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:orientation">horizontal</item>
+    <item name="android:paddingVertical">0dp</item>
+    <item name="android:paddingHorizontal">12dp</item>
+  </style>
+
+  <style name="title">
+    <item name="android:layout_gravity">start</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingTop">8dp</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="lab">
+    <item name="android:layout_gravity">center</item>
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_weight">3</item>
+    <item name="android:gravity">end</item>
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="input">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_weight">6</item>
+    <item name="android:textSize">18sp</item>
+    <item name="android:layout_marginEnd">40dp</item>
+  </style>
+
+  <style name="input_radio_button">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">18sp</item>
+    <item name="android:paddingRight">10dp</item>
   </style>
 
 </resources>

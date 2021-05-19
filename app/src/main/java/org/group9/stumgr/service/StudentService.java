@@ -2,6 +2,8 @@ package org.group9.stumgr.service;
 
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.util.Log;
 
@@ -9,6 +11,7 @@ import com.alibaba.fastjson.JSONArray;
 
 import org.group9.stumgr.bean.Student;
 import org.group9.stumgr.bean.StudentCriteria;
+import org.group9.stumgr.context.G9StuMgrApplication;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,17 +29,8 @@ import java.util.Date;
 import java.util.List;
 
 public class StudentService {
-   private static final String TAG = StudentService.class.getSimpleName();
 
-   public static List<Student> getDemoStudentsAsList() {
-      Student[] students = {
-         new Student("艾边城", "电话 139* * * * 8888\n湖北省武汉市洪山区 1 号"),
-         new Student("艾承旭", "电话 139* * * * 2222\n湖北省武汉市洪山区 2 号"),
-         new Student("马小云", "电话 139* * * * 3333\n湖北省武汉市洪山区 3 号"),
-         new Student("王小强", "电话 139* * * * 6666\n湖北省武汉市洪山区 4 号"),
-      };
-      return Arrays.asList(students);
-   }
+   private static final String TAG = StudentService.class.getSimpleName();
 
    public static List<Student> getRandomStudentsAsList(int n) {
       if (n < 0) {
@@ -45,10 +39,57 @@ public class StudentService {
       return StudentGenerator.genStudentList(n);
    }
 
+   public static List<Student> getAll() {
+      return G9StuMgrApplication.getStudentDao()
+         .getAll();
+   }
+
+   public static Student getById(int id) {
+      return G9StuMgrApplication.getStudentDao()
+         .getById(id);
+   }
+
+   /**
+    * @return 是插入除成功
+    */
+   public static boolean insert(Student student) {
+      return -1 != G9StuMgrApplication.getStudentDao()
+         .insert(student);
+   }
+
+   /**
+    * @return 是否修改成功
+    */
+   public static boolean update(Student student) {
+      return 1 == G9StuMgrApplication.getStudentDao()
+         .update(student);
+   }
+
+   public static void insertAll(List<Student> students) {
+      G9StuMgrApplication.getStudentDao()
+         .insertAll(students.toArray(new Student[0]));
+   }
+
+   /**
+    * @return 是否删除成功
+    */
+   public static boolean deleteById(int id) {
+      return 1 == G9StuMgrApplication.getStudentDao()
+         .deleteById(id);
+   }
+
+   /**
+    * @return 影响行数
+    */
+   public static int deleteAll() {
+      return G9StuMgrApplication.getStudentDao()
+         .deleteAll();
+   }
+
    /**
     * 导入操作
     */
-   public static List<Student> importStuInfoByJson(File file) {
+   public static List<Student> importStuInfoFromJson(File file) {
       List<Student> students = null;
       Log.d(TAG, "importStuInfoByJson: " + file.getPath());
 
@@ -65,6 +106,10 @@ public class StudentService {
          Log.d(TAG, "importStuInfoByJson: " + jsoncontent);
 
          students = JSONArray.parseArray(jsoncontent.toString(), Student.class);
+         // 清除id
+         for (Student student : students) {
+            student.setId(null);
+         }
 
          Log.d(TAG, "importStuInfoByJson: " + students);
 
